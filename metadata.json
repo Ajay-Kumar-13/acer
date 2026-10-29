@@ -1,0 +1,6 @@
+{
+  "name": "ACER - India's New-Age Credit Rating Agency",
+  "description": "Independent credit ratings, rigorous research, and analytical insights empowering investors, lenders, issuers, and market participants.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

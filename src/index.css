@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/* Custom subtle aura glow effects seen in reference image */
+.ambient-glow-purple {
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.28) 0%, rgba(139, 92, 246, 0.12) 40%, rgba(255, 255, 255, 0) 70%);
+}
+
+.ambient-glow-peach {
+  background: radial-gradient(circle at center, rgba(251, 146, 60, 0.25) 0%, rgba(244, 114, 182, 0.12) 40%, rgba(255, 255, 255, 0) 70%);
+}
+
+.gradient-text-purple {
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 60%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-purple-pink {
+  background: linear-gradient(90deg, #9333ea 0%, #c084fc 50%, #db2777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
