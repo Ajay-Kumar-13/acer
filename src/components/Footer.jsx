@@ -1,11 +1,6 @@
 import React from 'react';
 
-interface FooterProps {
-  onOpenRatingsSearch: () => void;
-  onOpenDisclosures?: (type: string) => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ onOpenRatingsSearch, onOpenDisclosures }) => {
+export const Footer = ({ onOpenRatingsSearch, onOpenDisclosures }) => {
   return (
     <footer id="disclosures" className="bg-white text-slate-700 pt-16 pb-12 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
@@ -86,14 +81,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRatingsSearch, onOpenDiscl
               </h4>
               <ul className="space-y-2 text-xs text-slate-500 font-normal">
                 <li>
-                  <a href="#disclosures" onClick={() => onOpenDisclosures?.('sebi')} className="hover:text-purple-600 transition-colors">
+                  <button onClick={() => onOpenDisclosures?.('sebi')} className="hover:text-purple-600 transition-colors cursor-pointer text-left">
                     SEBI Disclosures
-                  </a>
+                  </button>
                 </li>
                 <li>
-                  <a href="#disclosures" onClick={() => onOpenDisclosures?.('fsr')} className="hover:text-purple-600 transition-colors">
+                  <button onClick={() => onOpenDisclosures?.('fsr')} className="hover:text-purple-600 transition-colors cursor-pointer text-left">
                     FSR Disclosures
-                  </a>
+                  </button>
                 </li>
               </ul>
             </div>

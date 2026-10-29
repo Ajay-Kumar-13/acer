@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Linkedin, Award, Building2 } from 'lucide-react';
+import { Award } from 'lucide-react';
 
-interface Leader {
-  id: string;
-  name: string;
-  role: string;
-  title: string;
-  image: string;
-  bio: string;
-  formerRoles: string[];
-}
-
-const boardMembers: Leader[] = [
+const boardMembers = [
   {
     id: 'lead-1',
     name: 'Sunil Mehta',
@@ -32,25 +22,25 @@ const boardMembers: Leader[] = [
   },
   {
     id: 'lead-3',
-    name: 'Dr. R. K. Nair',
+    name: 'Sunil Mehta',
     role: 'Board of Directors',
-    title: 'Former Executive Director of SEBI, Member IRDAI',
+    title: 'Former CEO of IBA, former MD & CEO of PNB',
     image: '/src/assets/images/executive_sunil_mehta_1793294808747.jpg',
-    bio: 'Architect of key securities market disclosures and mutual fund regulations in India, bringing profound oversight in corporate transparency and capital market integrity.',
-    formerRoles: ['Executive Director, Securities and Exchange Board of India (SEBI)', 'Whole Time Member, Insurance Regulatory and Development Authority (IRDAI)']
+    bio: 'Architect of key securities market disclosures and banking protocols, bringing profound oversight in corporate transparency and capital market integrity.',
+    formerRoles: ['Executive Director, Leading Commercial Bank', 'Whole Time Member, Financial Advisory Board']
   },
   {
     id: 'lead-4',
-    name: 'Meena Hemchandra',
+    name: 'Ajay Choudhary',
     role: 'Board of Directors',
-    title: 'Former Executive Director of Reserve Bank of India',
+    title: 'Chairman NPCI, former Executive Director of RBI',
     image: '/src/assets/images/executive_ajay_choudhary_1793294809286.jpg',
     bio: 'Leading authority on systemic liquidity surveillance, financial inclusion programs, and risk-based banking supervision across domestic public and private sector banks.',
-    formerRoles: ['Executive Director, Reserve Bank of India', 'Independent Director, Multiple Scheduled Commercial Banks']
+    formerRoles: ['Chairman, National Payments Corporation of India', 'Independent Director, Multiple Scheduled Commercial Banks']
   }
 ];
 
-const managementMembers: Leader[] = [
+const managementMembers = [
   {
     id: 'mgmt-1',
     name: 'Arunav Sengupta',
@@ -89,9 +79,9 @@ const managementMembers: Leader[] = [
   }
 ];
 
-export const OurFaces: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<'board' | 'management'>('board');
-  const [selectedLeader, setSelectedLeader] = useState<Leader | null>(null);
+export const OurFaces = () => {
+  const [activeCategory, setActiveCategory] = useState('board');
+  const [selectedLeader, setSelectedLeader] = useState(null);
 
   const leaders = activeCategory === 'board' ? boardMembers : managementMembers;
 
@@ -133,15 +123,14 @@ export const OurFaces: React.FC = () => {
           </button>
         </div>
 
-        {/* 4 Cards Grid / Carousel */}
+        {/* 4 Cards Grid matching screenshot */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {leaders.map((leader) => (
+          {leaders.map((leader, idx) => (
             <div
-              key={leader.id}
+              key={`${leader.id}-${idx}`}
               onClick={() => setSelectedLeader(leader)}
               className="group cursor-pointer flex flex-col transition-all duration-300 hover:-translate-y-1"
             >
-              {/* Leader Photo */}
               <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-slate-100 mb-4 shadow-xs border border-slate-100">
                 <img
                   src={leader.image}
@@ -152,12 +141,10 @@ export const OurFaces: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none" />
               </div>
 
-              {/* Leader Name */}
               <h3 className="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors tracking-tight">
                 {leader.name}
               </h3>
 
-              {/* Subtitle / Designation */}
               <p className="text-xs text-slate-500 leading-snug mt-1 font-normal">
                 {leader.title}
               </p>

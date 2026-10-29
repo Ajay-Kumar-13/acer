@@ -1,43 +1,30 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Download, FileText, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface RatingCard {
-  id: string;
-  image: string;
-  title: string;
-  date: string;
-  fileSize: string;
-  category: string;
-  summary: string;
-}
-
-const ratingsList: RatingCard[] = [
+const ratingsList = [
   {
     id: 'rate-1',
     image: '/src/assets/images/financial_analyst_stress_1793294807179.jpg',
     title: 'CRISIL ECONOMY FIRST CUT: FINANCIAL CONDITIONS TIGHTEN FURTHER',
     date: 'May 18, 2026',
     fileSize: '1.6 MB',
-    category: 'Macroeconomic Commentary',
-    summary: 'Systemic liquidity conditions moderated amid seasonal tax outflows and RBI foreign exchange interventions, tightening financial conditions across banking and debt markets.'
+    category: 'Macroeconomic Commentary'
   },
   {
     id: 'rate-2',
     image: '/src/assets/images/modern_glass_skyscraper_1793294807340.jpg',
-    title: 'INFRASTRUCTURE CREDIT PULSE: COMMERCIAL CAPEX STRENGTHENS',
+    title: 'CRISIL ECONOMY FIRST CUT: FINANCIAL CONDITIONS TIGHTEN FURTHER',
     date: 'May 18, 2026',
     fileSize: '1.6 MB',
-    category: 'Infrastructure & Real Assets',
-    summary: 'Commercial real estate and toll road concessions demonstrate resilient debt service coverage ratios supported by robust freight traffic and office pre-leasing.'
+    category: 'Infrastructure & Real Assets'
   },
   {
     id: 'rate-3',
     image: '/src/assets/images/executive_sunil_mehta_1793294808747.jpg',
-    title: 'BANKING SECTOR ASSET QUALITY: NPA RATIOS HIT MULTI-YEAR LOWS',
+    title: 'CRISIL ECONOMY FIRST CUT: FINANCIAL CONDITIONS TIGHTEN FURTHER',
     date: 'May 18, 2026',
     fileSize: '1.6 MB',
-    category: 'Financial Institutions',
-    summary: 'Scheduled commercial banks maintain healthy capital adequacy and return on assets, while retail unsecured lending credit costs show mild normalization.'
+    category: 'Financial Institutions'
   },
   {
     id: 'rate-4',
@@ -45,8 +32,7 @@ const ratingsList: RatingCard[] = [
     title: 'DIGITAL PAYMENTS & FINTECH CREDIT: SURVEILLANCE OUTLOOK 2026',
     date: 'May 15, 2026',
     fileSize: '2.4 MB',
-    category: 'Fintech Surveillance',
-    summary: 'Assessment of transaction volumes, merchant discount rate economics, and liquidity backup facilities for emerging payment aggregators and NBFC-P2P entities.'
+    category: 'Fintech Surveillance'
   },
   {
     id: 'rate-5',
@@ -54,17 +40,11 @@ const ratingsList: RatingCard[] = [
     title: 'SOVEREIGN & STATE FINANCES: SUB-NATIONAL FISCAL HEALTH REPORT',
     date: 'May 12, 2026',
     fileSize: '3.1 MB',
-    category: 'Public Finance',
-    summary: 'State development loan issuance patterns, off-budget debt liabilities, and capital outlay trends across major Indian state economies.'
+    category: 'Public Finance'
   }
 ];
 
-interface LatestRatingsProps {
-  onOpenRatingsSearch: () => void;
-  onSelectRating?: (rating: RatingCard) => void;
-}
-
-export const LatestRatings: React.FC<LatestRatingsProps> = ({ onOpenRatingsSearch, onSelectRating }) => {
+export const LatestRatings = ({ onOpenRatingsSearch, onSelectRating }) => {
   const [startIndex, setStartIndex] = useState(0);
   const itemsPerPage = 3;
   const maxIndex = Math.max(0, ratingsList.length - itemsPerPage);
@@ -92,7 +72,6 @@ export const LatestRatings: React.FC<LatestRatingsProps> = ({ onOpenRatingsSearc
             Latest Ratings
           </h2>
 
-          {/* Carousel Arrows */}
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrev}
@@ -121,7 +100,6 @@ export const LatestRatings: React.FC<LatestRatingsProps> = ({ onOpenRatingsSearc
               onClick={() => onSelectRating?.(card)}
               className="group cursor-pointer flex flex-col transition-transform duration-300 hover:-translate-y-1"
             >
-              {/* Card Image */}
               <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-100 shadow-sm border border-slate-100/80 mb-5">
                 <img
                   src={card.image}
@@ -132,12 +110,10 @@ export const LatestRatings: React.FC<LatestRatingsProps> = ({ onOpenRatingsSearc
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent pointer-events-none" />
               </div>
 
-              {/* Card Title */}
               <h3 className="text-xs sm:text-[13px] font-bold text-slate-900 group-hover:text-purple-600 transition-colors uppercase tracking-tight leading-snug line-clamp-2 mb-2">
                 {card.title}
               </h3>
 
-              {/* Metadata with unboxed typographic separator */}
               <div className="flex items-center gap-2 text-xs text-slate-500 font-normal">
                 <span>{card.date}</span>
                 <span aria-hidden="true">·</span>

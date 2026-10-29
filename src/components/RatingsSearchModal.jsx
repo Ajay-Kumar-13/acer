@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
-import { X, Search, Download, FileText, Filter, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { X, Search, Download, CheckCircle2 } from 'lucide-react';
 
-interface RatingRecord {
-  id: string;
-  issuer: string;
-  sector: string;
-  instrument: string;
-  rating: string;
-  outlook: 'Stable' | 'Positive' | 'Negative' | 'Watch';
-  date: string;
-  size: string;
-}
-
-const ratingDatabase: RatingRecord[] = [
+const ratingDatabase = [
   {
     id: 'rec-1',
     issuer: 'Tata Steel Limited',
@@ -85,15 +74,10 @@ const ratingDatabase: RatingRecord[] = [
   }
 ];
 
-interface RatingsSearchModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export const RatingsSearchModal: React.FC<RatingsSearchModalProps> = ({ isOpen, onClose }) => {
+export const RatingsSearchModal = ({ isOpen, onClose }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sectorFilter, setSectorFilter] = useState('ALL');
-  const [downloadNotice, setDownloadNotice] = useState<string | null>(null);
+  const [downloadNotice, setDownloadNotice] = useState(null);
 
   if (!isOpen) return null;
 
@@ -108,7 +92,7 @@ export const RatingsSearchModal: React.FC<RatingsSearchModalProps> = ({ isOpen, 
     return matchesSearch && matchesSector;
   });
 
-  const handleDownloadRationale = (issuer: string) => {
+  const handleDownloadRationale = (issuer) => {
     setDownloadNotice(issuer);
     setTimeout(() => setDownloadNotice(null), 3000);
   };
@@ -132,7 +116,7 @@ export const RatingsSearchModal: React.FC<RatingsSearchModalProps> = ({ isOpen, 
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+            className="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
             aria-label="Close dialog"
           >
             <X className="w-5 h-5" />
@@ -238,7 +222,7 @@ export const RatingsSearchModal: React.FC<RatingsSearchModalProps> = ({ isOpen, 
           <span>Showing {filtered.length} of {ratingDatabase.length} published ratings</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 text-slate-700 hover:bg-slate-100 rounded-lg"
+            className="px-4 py-1.5 text-slate-700 hover:bg-slate-100 rounded-lg cursor-pointer"
           >
             Close
           </button>

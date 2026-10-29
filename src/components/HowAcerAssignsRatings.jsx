@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, ChevronRight, FileCheck, Layers, Users } from 'lucide-react';
+import { CheckCircle2, ChevronRight } from 'lucide-react';
 
-interface ProcessStep {
-  number: string;
-  title: string;
-  summary: string;
-  deliverables: string[];
-}
-
-const steps: ProcessStep[] = [
+const steps = [
   {
     number: '01',
     title: 'Rating Mandate',
@@ -61,8 +54,8 @@ const steps: ProcessStep[] = [
   }
 ];
 
-export const HowAcerAssignsRatings: React.FC = () => {
-  const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
+export const HowAcerAssignsRatings = () => {
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
 
   return (
     <section id="process" className="py-24 bg-[#120E24] text-white relative overflow-hidden">
@@ -85,10 +78,8 @@ export const HowAcerAssignsRatings: React.FC = () => {
 
         {/* Process Stepper matching screenshot's "01 Rating Mandate", "02 Information Collection", "03 Analytical Assessment" */}
         <div className="relative">
-          {/* Horizontal connecting line across stepper */}
           <div className="hidden md:block absolute top-[44px] inset-x-8 h-px bg-gradient-to-r from-purple-500/30 via-pink-400/40 to-purple-500/20 pointer-events-none -z-0" />
 
-          {/* Stepper items */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10 md:gap-6 relative z-10">
             {steps.map((step, idx) => {
               const isActive = activeStepIndex === idx;
@@ -98,23 +89,19 @@ export const HowAcerAssignsRatings: React.FC = () => {
                   onClick={() => setActiveStepIndex(idx)}
                   className={`group cursor-pointer flex flex-col transition-all duration-300 ${isActive ? 'opacity-100 scale-102' : 'opacity-70 hover:opacity-100'}`}
                 >
-                  {/* Outline Number */}
                   <div className="relative mb-6">
                     <span className={`text-5xl sm:text-6xl font-light font-mono transition-colors tracking-tighter ${isActive ? 'text-purple-300 font-normal drop-shadow-[0_0_12px_rgba(192,132,252,0.4)]' : 'text-purple-300/40 group-hover:text-purple-300/70'}`}>
                       {step.number}
                     </span>
-                    {/* Active pulse indicator on current step */}
                     {isActive && (
                       <span className="absolute -bottom-1 left-2 w-2 h-2 rounded-full bg-pink-400 animate-pulse" />
                     )}
                   </div>
 
-                  {/* Step Title */}
                   <h3 className={`text-xl sm:text-2xl font-semibold tracking-tight transition-colors mb-3 leading-snug ${isActive ? 'text-white' : 'text-slate-200 group-hover:text-white'}`}>
                     {step.title}
                   </h3>
 
-                  {/* Summary snippet */}
                   <p className="text-xs text-slate-400 leading-relaxed line-clamp-3 group-hover:text-slate-300">
                     {step.summary}
                   </p>
@@ -138,13 +125,13 @@ export const HowAcerAssignsRatings: React.FC = () => {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setActiveStepIndex((prev) => (prev > 0 ? prev - 1 : steps.length - 1))}
-                className="px-3.5 py-1.5 rounded-lg border border-white/15 text-xs text-slate-300 hover:text-white hover:border-purple-400 transition-colors"
+                className="px-3.5 py-1.5 rounded-lg border border-white/15 text-xs text-slate-300 hover:text-white hover:border-purple-400 transition-colors cursor-pointer"
               >
                 Previous Step
               </button>
               <button
                 onClick={() => setActiveStepIndex((prev) => (prev < steps.length - 1 ? prev + 1 : 0))}
-                className="px-3.5 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-xs text-white font-medium transition-colors flex items-center gap-1.5"
+                className="px-3.5 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-xs text-white font-medium transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <span>Next Step</span>
                 <ChevronRight className="w-3.5 h-3.5" />

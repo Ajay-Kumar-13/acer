@@ -1,14 +1,6 @@
 import React from 'react';
 
-interface Pillar {
-  id: string;
-  title: string;
-  description: string;
-  bgClass: string;
-  bgStyle?: React.CSSProperties;
-}
-
-const pillars: Pillar[] = [
+const pillars = [
   {
     id: 'independent',
     title: 'INDEPENDENT ANALYSIS',
@@ -35,7 +27,7 @@ const pillars: Pillar[] = [
   }
 ];
 
-export const WhyAcer: React.FC = () => {
+export const WhyAcer = () => {
   return (
     <section id="why-acer" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -54,17 +46,14 @@ export const WhyAcer: React.FC = () => {
               key={pillar.id}
               className={`${pillar.bgClass} px-8 py-10 lg:py-12 flex flex-col justify-center text-center text-white relative transition-transform duration-300 hover:brightness-110`}
             >
-              {/* Subtle separator on desktop between pods */}
               {index > 0 && (
                 <div className="hidden lg:block absolute left-0 inset-y-6 w-px bg-white/10 pointer-events-none" />
               )}
 
-              {/* Title */}
               <h3 className="text-sm font-bold tracking-wider uppercase text-white mb-4">
                 {pillar.title}
               </h3>
 
-              {/* Description */}
               <p className="text-xs text-white/85 leading-relaxed font-normal">
                 {pillar.description}
               </p>

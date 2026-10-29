@@ -1,11 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
-interface HeroProps {
-  onOpenGetRated: () => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onOpenGetRated }) => {
+export const Hero = ({ onOpenGetRated }) => {
   return (
     <section className="relative overflow-hidden pt-8 pb-20 lg:pt-14 lg:pb-28">
       {/* Ambient background glow matching the screenshot */}
@@ -44,9 +40,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetRated }) => {
             </div>
           </div>
 
-          {/* Right Column: High-Impact Alpine Card with Institutional Promoters */}
+          {/* Right Column: Alpine Mountain Card with Institutional Promoters */}
           <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
-            {/* Ambient aura bleeding behind mountain card */}
             <div className="absolute -top-12 -left-12 w-72 h-72 ambient-glow-purple rounded-full blur-2xl opacity-75 pointer-events-none" />
 
             <div className="relative w-full max-w-[500px] rounded-[32px] overflow-hidden shadow-2xl border border-slate-100 bg-slate-950 group">
@@ -59,7 +54,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetRated }) => {
                   referrerPolicy="no-referrer"
                 />
 
-                {/* Subtle top/side gradient tint */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-purple-900/10 pointer-events-none" />
               </div>
 
@@ -80,7 +74,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetRated }) => {
                         INDIAN OVERSEAS BANK
                       </p>
                     </div>
-                    {/* Bank Icon Motif */}
                     <div className="ml-2 w-7 h-7 rounded-sm bg-purple-950/60 border border-purple-400/30 flex items-center justify-center shrink-0">
                       <div className="w-3.5 h-3.5 border-2 border-purple-300 rotate-45" />
                     </div>
@@ -88,7 +81,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenGetRated }) => {
 
                   {/* Right Sponsor: Central Bank of India */}
                   <div className="relative flex items-center justify-between pl-1">
-                    {/* Bank Icon Motif */}
                     <div className="mr-2 w-7 h-7 rounded-sm bg-rose-950/60 border border-rose-400/30 flex items-center justify-center shrink-0">
                       <div className="w-3.5 h-3.5 bg-rose-500 rounded-xs flex items-center justify-center">
                         <div className="w-1.5 h-1.5 bg-white rounded-full" />

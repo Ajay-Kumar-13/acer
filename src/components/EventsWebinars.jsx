@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, MapPin, Video, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, Video, ChevronLeft, ChevronRight, CheckCircle2 } from 'lucide-react';
 
-interface EventItem {
-  id: string;
-  image: string;
-  tag: string;
-  topic: string;
-  description: string;
-  date: string;
-  time: string;
-  type: 'Webinar' | 'Conclave' | 'Roundtable';
-  speaker: string;
-}
-
-const eventsData: EventItem[] = [
+const eventsData = [
   {
     id: 'evt-1',
     image: '/src/assets/images/financial_analyst_stress_1793294807179.jpg',
@@ -60,10 +48,10 @@ const eventsData: EventItem[] = [
   }
 ];
 
-export const EventsWebinars: React.FC = () => {
+export const EventsWebinars = () => {
   const [startIndex, setStartIndex] = useState(0);
-  const [registeredEvent, setRegisteredEvent] = useState<string | null>(null);
-  const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);
+  const [registeredEvent, setRegisteredEvent] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   const itemsPerPage = 3;
   const maxIndex = Math.max(0, eventsData.length - itemsPerPage);
@@ -120,7 +108,6 @@ export const EventsWebinars: React.FC = () => {
               onClick={() => setSelectedEvent(evt)}
               className="group cursor-pointer flex flex-col transition-all duration-300 hover:-translate-y-1"
             >
-              {/* Event Image */}
               <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-100 mb-4 shadow-sm border border-slate-100">
                 <img
                   src={evt.image}
@@ -133,12 +120,10 @@ export const EventsWebinars: React.FC = () => {
                 </div>
               </div>
 
-              {/* Tag / Micro-header matching screenshot's "EVENT TITLE" */}
               <span className="text-[11px] font-bold tracking-wider text-slate-800 uppercase block mb-1">
                 {evt.tag}
               </span>
 
-              {/* Description matching screenshot */}
               <p className="text-xs text-slate-600 leading-relaxed font-normal">
                 {evt.description}
               </p>
@@ -194,7 +179,7 @@ export const EventsWebinars: React.FC = () => {
                 <div className="mt-6 flex items-center justify-end gap-3">
                   <button
                     onClick={() => setSelectedEvent(null)}
-                    className="px-4 py-2 text-xs font-medium text-slate-600 hover:text-slate-900"
+                    className="px-4 py-2 text-xs font-medium text-slate-600 hover:text-slate-900 cursor-pointer"
                   >
                     Cancel
                   </button>

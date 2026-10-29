@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, ChevronRight, FileText, Layers, RefreshCw } from 'lucide-react';
+import { ChevronRight, CheckCircle2 } from 'lucide-react';
 
-interface ServiceItem {
-  id: string;
-  title: string;
-  description: string;
-  details: {
-    overview: string;
-    highlights: string[];
-    instruments: string[];
-  };
-}
-
-const servicesData: ServiceItem[] = [
+const servicesData = [
   {
     id: 'ratings',
     title: 'Ratings',
@@ -24,8 +13,7 @@ const servicesData: ServiceItem[] = [
         'Long-term and Short-term Bank Facilities',
         'Non-Convertible Debentures (NCDs) & Commercial Paper',
         'Structured Debt & Securitization Instruments'
-      ],
-      instruments: ['Bank Loans', 'NCDs / Bonds', 'Commercial Paper', 'Structured Finance']
+      ]
     }
   },
   {
@@ -39,8 +27,7 @@ const servicesData: ServiceItem[] = [
         'Event-driven rating watchlist and outlook revisions',
         'Quarterly financial monitoring against financial covenants',
         'Real-time material development notifications'
-      ],
-      instruments: ['Quarterly Triggers', 'Watchlist Alerts', 'Covenant Tracking', 'Rating Actions']
+      ]
     }
   },
   {
@@ -54,27 +41,24 @@ const servicesData: ServiceItem[] = [
         'Quantitative scoring engines & peer benchmark matrices',
         'ESG integration into corporate credit risk profiling',
         'Default study and transition rate analytics'
-      ],
-      instruments: ['Sector Criteria', 'Financial Risk Models', 'Governance Rubrics', 'Default Matrix']
+      ]
     }
   }
 ];
 
-export const OurServices: React.FC = () => {
-  const [activeService, setActiveService] = useState<string | null>(null);
+export const OurServices = () => {
+  const [activeService, setActiveService] = useState(null);
 
   return (
     <section id="services" className="py-20 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Title */}
         <div className="mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
             Our Services
           </h2>
         </div>
 
-        {/* 3 Pillars matching screenshot */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
           {servicesData.map((service) => {
             const isSelected = activeService === service.id;
@@ -94,7 +78,6 @@ export const OurServices: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Distinctive pink/magenta underline indicator seen in screenshot */}
                 <div className="mt-8 pt-4">
                   <div className="h-[2px] w-full bg-gradient-to-r from-pink-400 via-purple-300 to-pink-200 group-hover:from-pink-500 group-hover:via-purple-500 group-hover:to-purple-300 transition-all duration-300" />
                   
@@ -104,7 +87,6 @@ export const OurServices: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Expandable details when clicked */}
                 {isSelected && (
                   <div className="mt-4 p-4 rounded-xl bg-purple-50/70 border border-purple-100/80 animate-in fade-in slide-in-from-top-2 duration-200">
                     <p className="text-xs text-slate-700 mb-3 leading-relaxed">

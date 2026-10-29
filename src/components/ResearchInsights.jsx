@@ -1,21 +1,7 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, BarChart3, Download, FileText, TrendingDown, TrendingUp, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { BarChart3, Download, TrendingUp, CheckCircle2 } from 'lucide-react';
 
-interface SectorReport {
-  id: string;
-  tabTitle: string;
-  reportName: string;
-  releaseDate: string;
-  pages: number;
-  pdfSize: string;
-  executiveSummary: string;
-  creditOutlook: 'Positive' | 'Stable' | 'Cautious';
-  keyMetrics: { label: string; value: string; change: string; isPositive: boolean }[];
-  keyDrivers: string[];
-  risksToWatch: string[];
-}
-
-const sectorData: SectorReport[] = [
+const sectorData = [
   {
     id: 'steel',
     tabTitle: 'STEEL SECTOR OUTLOOK',
@@ -35,10 +21,6 @@ const sectorData: SectorReport[] = [
       'National Infrastructure Pipeline (NIP) budget allocation expansion',
       'Automotive and industrial machinery capital goods demand surge',
       'High scrap import substitution and green hydrogen pilot incentives'
-    ],
-    risksToWatch: [
-      'Surge in cheap steel imports from non-traditional surplus markets',
-      'Coking coal supply disruption risks from Australian basin ports'
     ]
   },
   {
@@ -60,10 +42,6 @@ const sectorData: SectorReport[] = [
       'Patent cliff opportunities: $140B in biologic and small-molecule patent expiries',
       'PLI scheme phase-II disbursement supporting indigenous key starting materials (KSMs)',
       'Expansion into Latin American and Southeast Asian tender markets'
-    ],
-    risksToWatch: [
-      'Stringent US FDA inspection scrutiny and Official Action Indicated (OAI) notices',
-      'Regulatory price capping expansions in essential domestic medications'
     ]
   },
   {
@@ -85,10 +63,6 @@ const sectorData: SectorReport[] = [
       'Rapid penetration of quick-commerce delivery requiring sturdy paper cartons',
       'Premiumization in cosmetic and high-value consumer electronics retail boxes',
       'In-house solar cogeneration mitigating grid industrial tariff spikes'
-    ],
-    risksToWatch: [
-      'Domestic wood pulp raw material availability and logistics friction',
-      'Rapid capacity additions by mid-tier mills risking short-term pricing power'
     ]
   },
   {
@@ -110,21 +84,17 @@ const sectorData: SectorReport[] = [
       'Government incentive schemes for electric mobility and grid-scale ESS batteries',
       'Rising demand for austenitic nickel-bearing stainless steels in defense & aerospace',
       'Strategic bilateral mineral partnership pacts with Australia and African nations'
-    ],
-    risksToWatch: [
-      'Prolonged Indonesian output surplus depressing worldwide mine gate economics',
-      'Substitution by lithium iron phosphate (LFP) chemistries in entry-level EV models'
     ]
   }
 ];
 
-export const ResearchInsights: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('steel');
-  const [downloadSuccess, setDownloadSuccess] = useState<string | null>(null);
+export const ResearchInsights = () => {
+  const [activeTab, setActiveTab] = useState('steel');
+  const [downloadSuccess, setDownloadSuccess] = useState(null);
 
   const currentReport = sectorData.find((s) => s.id === activeTab) || sectorData[0];
 
-  const handleDownload = (reportName: string) => {
+  const handleDownload = (reportName) => {
     setDownloadSuccess(reportName);
     setTimeout(() => setDownloadSuccess(null), 3000);
   };

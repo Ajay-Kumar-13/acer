@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import { ChevronDown, Menu, X, ShieldCheck, Search, ArrowRight, ExternalLink } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, Search } from 'lucide-react';
 
-interface HeaderProps {
-  onOpenGetRated: () => void;
-  onOpenRatingsSearch: () => void;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onOpenGetRated, onOpenRatingsSearch }) => {
+export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [ratingsDropdownOpen, setRatingsDropdownOpen] = useState(false);
 
@@ -16,7 +11,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenGetRated, onOpenRatingsSea
         {/* Brand Zone */}
         <a href="#" className="flex items-center gap-2.5 group shrink-0">
           <div className="relative flex items-center">
-            {/* Custom geometric logo icon matching ACER */}
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 24L12 8L16 16L12 24H4Z" fill="#9381FF" fillOpacity="0.85" />
               <path d="M16 16L20 8L28 24H20L16 16Z" fill="#6C5CE7" />

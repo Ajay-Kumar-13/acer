@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, ShieldAlert, ArrowRight, Building, Mail, Phone, User, Landmark } from 'lucide-react';
+import { X, CheckCircle2, ShieldAlert, Building, Mail, Phone, User } from 'lucide-react';
 
-interface GetRatedModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export const GetRatedModal: React.FC<GetRatedModalProps> = ({ isOpen, onClose }) => {
+export const GetRatedModal = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
     companyName: '',
     contactName: '',
@@ -17,11 +12,11 @@ export const GetRatedModal: React.FC<GetRatedModalProps> = ({ isOpen, onClose })
     timeline: 'Immediate (Within 2-3 weeks)'
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.companyName || !formData.email || !formData.phone) {
       setError('Please provide company name, email, and contact number.');
@@ -49,10 +44,9 @@ export const GetRatedModal: React.FC<GetRatedModalProps> = ({ isOpen, onClose })
     <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
       <div className="relative bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl border border-slate-100 my-8 animate-in zoom-in-95 duration-200">
         
-        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors"
+          className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer"
           aria-label="Close dialog"
         >
           <X className="w-5 h-5" />
@@ -74,7 +68,7 @@ export const GetRatedModal: React.FC<GetRatedModalProps> = ({ isOpen, onClose })
             </div>
             <button
               onClick={handleReset}
-              className="mt-4 bg-[#786CF0] hover:bg-[#685BD8] text-white text-xs font-semibold px-6 py-2.5 rounded-lg uppercase tracking-wider"
+              className="mt-4 bg-[#786CF0] hover:bg-[#685BD8] text-white text-xs font-semibold px-6 py-2.5 rounded-lg uppercase tracking-wider cursor-pointer"
             >
               Done
             </button>

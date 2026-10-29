@@ -4,19 +4,19 @@
  */
 
 import React, { useState } from 'react';
-import { Header } from './components/Header.tsx';
-import { Hero } from './components/Hero.tsx';
-import { OurServices } from './components/OurServices.tsx';
-import { LatestRatings } from './components/LatestRatings.tsx';
-import { WhyAcer } from './components/WhyAcer.tsx';
-import { HowAcerAssignsRatings } from './components/HowAcerAssignsRatings.tsx';
-import { ResearchInsights } from './components/ResearchInsights.tsx';
-import { OurFaces } from './components/OurFaces.tsx';
-import { EventsWebinars } from './components/EventsWebinars.tsx';
-import { CallToAction } from './components/CallToAction.tsx';
-import { Footer } from './components/Footer.tsx';
-import { GetRatedModal } from './components/GetRatedModal.tsx';
-import { RatingsSearchModal } from './components/RatingsSearchModal.tsx';
+import { Header } from './components/Header.jsx';
+import { Hero } from './components/Hero.jsx';
+import { OurServices } from './components/OurServices.jsx';
+import { LatestRatings } from './components/LatestRatings.jsx';
+import { WhyAcer } from './components/WhyAcer.jsx';
+import { HowAcerAssignsRatings } from './components/HowAcerAssignsRatings.jsx';
+import { ResearchInsights } from './components/ResearchInsights.jsx';
+import { OurFaces } from './components/OurFaces.jsx';
+import { EventsWebinars } from './components/EventsWebinars.jsx';
+import { CallToAction } from './components/CallToAction.jsx';
+import { Footer } from './components/Footer.jsx';
+import { GetRatedModal } from './components/GetRatedModal.jsx';
+import { RatingsSearchModal } from './components/RatingsSearchModal.jsx';
 
 export default function App() {
   const [getRatedModalOpen, setGetRatedModalOpen] = useState(false);
@@ -65,7 +65,7 @@ export default function App() {
       {/* Footer with Links and Regulatory Disclaimers */}
       <Footer
         onOpenRatingsSearch={() => setRatingsSearchModalOpen(true)}
-        onOpenDisclosures={(type) => {
+        onOpenDisclosures={() => {
           setRatingsSearchModalOpen(true);
         }}
       />
