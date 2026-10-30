@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Footer = ({ onOpenRatingsSearch, onOpenDisclosures }) => {
+export const Footer = ({ onNavigate, onOpenRatingsSearch, onOpenDisclosures }) => {
   return (
     <footer id="disclosures" className="bg-white text-slate-700 pt-16 pb-12 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
@@ -10,7 +10,10 @@ export const Footer = ({ onOpenRatingsSearch, onOpenDisclosures }) => {
           
           {/* Brand Column */}
           <div className="md:col-span-3 space-y-4">
-            <a href="#" className="flex items-center gap-2.5">
+            <button
+              onClick={() => onNavigate?.('home')}
+              className="flex items-center gap-2.5 cursor-pointer text-left"
+            >
               <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 24L12 8L16 16L12 24H4Z" fill="#9381FF" fillOpacity="0.85" />
                 <path d="M16 16L20 8L28 24H20L16 16Z" fill="#6C5CE7" />
@@ -18,7 +21,7 @@ export const Footer = ({ onOpenRatingsSearch, onOpenDisclosures }) => {
               <span className="text-xl font-bold tracking-tight text-[#1E1B4B]">
                 ACER
               </span>
-            </a>
+            </button>
             <p className="text-xs text-slate-500 max-w-xs leading-relaxed">
               India's New-Age Credit Rating Agency. Promoted by Indian Overseas Bank & supported by Central Bank of India.
             </p>
@@ -33,10 +36,38 @@ export const Footer = ({ onOpenRatingsSearch, onOpenDisclosures }) => {
                 ABOUT
               </h4>
               <ul className="space-y-2 text-xs text-slate-500 font-normal">
-                <li><a href="#about" className="hover:text-purple-600 transition-colors">Company Overview</a></li>
-                <li><a href="#why-acer" className="hover:text-purple-600 transition-colors">Vision</a></li>
-                <li><a href="#why-acer" className="hover:text-purple-600 transition-colors">Mission</a></li>
-                <li><a href="#about" className="hover:text-purple-600 transition-colors">Members</a></li>
+                <li>
+                  <button
+                    onClick={() => onNavigate?.('about')}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Company Overview
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => onNavigate?.('about')}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Vision
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => onNavigate?.('about')}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Mission
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => onNavigate?.('about')}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Members
+                  </button>
+                </li>
               </ul>
             </div>
 
@@ -56,8 +87,32 @@ export const Footer = ({ onOpenRatingsSearch, onOpenDisclosures }) => {
                     Rationales
                   </button>
                 </li>
-                <li><a href="#services" className="hover:text-purple-600 transition-colors">Definitions</a></li>
-                <li><a href="#services" className="hover:text-purple-600 transition-colors">Methodologies</a></li>
+                <li>
+                  <button
+                    onClick={() => {
+                      onNavigate?.('home');
+                      setTimeout(() => {
+                        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Definitions
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      onNavigate?.('home');
+                      setTimeout(() => {
+                        document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Methodologies
+                  </button>
+                </li>
               </ul>
             </div>
 
@@ -67,10 +122,58 @@ export const Footer = ({ onOpenRatingsSearch, onOpenDisclosures }) => {
                 RESEARCH & INSIGHTS
               </h4>
               <ul className="space-y-2 text-xs text-slate-500 font-normal">
-                <li><a href="#research" className="hover:text-purple-600 transition-colors">Sector Reports</a></li>
-                <li><a href="#research" className="hover:text-purple-600 transition-colors">Economic Research</a></li>
-                <li><a href="#research" className="hover:text-purple-600 transition-colors">Thematic Research</a></li>
-                <li><a href="#research" className="hover:text-purple-600 transition-colors">Research Archive</a></li>
+                <li>
+                  <button
+                    onClick={() => {
+                      onNavigate?.('home');
+                      setTimeout(() => {
+                        document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Sector Reports
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      onNavigate?.('home');
+                      setTimeout(() => {
+                        document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Economic Research
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      onNavigate?.('home');
+                      setTimeout(() => {
+                        document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Thematic Research
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => {
+                      onNavigate?.('home');
+                      setTimeout(() => {
+                        document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
+                    }}
+                    className="hover:text-purple-600 transition-colors cursor-pointer text-left"
+                  >
+                    Research Archive
+                  </button>
+                </li>
               </ul>
             </div>
 

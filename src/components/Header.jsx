@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { ChevronDown, Menu, X, ArrowRight, Search } from 'lucide-react';
 
-export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
+export const Header = ({ currentPage = 'home', onNavigate, onOpenGetRated, onOpenRatingsSearch }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [ratingsDropdownOpen, setRatingsDropdownOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all duration-200">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-8">
+        
         {/* Brand Zone */}
-        <a href="#" className="flex items-center gap-2.5 group shrink-0">
+        <button
+          onClick={() => onNavigate('home')}
+          className="flex items-center gap-2.5 group shrink-0 cursor-pointer text-left"
+        >
           <div className="relative flex items-center">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 24L12 8L16 16L12 24H4Z" fill="#9381FF" fillOpacity="0.85" />
@@ -19,18 +23,24 @@ export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
           <span className="text-xl font-bold tracking-tight text-[#1E1B4B] group-hover:text-purple-600 transition-colors">
             ACER
           </span>
-        </a>
+        </button>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-8 text-[13px] font-medium tracking-wider text-slate-700">
-          <a
-            href="#about"
-            className="hover:text-purple-600 transition-colors uppercase whitespace-nowrap shrink-0"
+          
+          {/* ABOUT LINK */}
+          <button
+            onClick={() => onNavigate('about')}
+            className={`transition-colors uppercase whitespace-nowrap shrink-0 cursor-pointer py-2 ${
+              currentPage === 'about'
+                ? 'text-purple-600 font-semibold border-b-2 border-purple-600'
+                : 'hover:text-purple-600'
+            }`}
           >
             ABOUT
-          </a>
+          </button>
 
-          {/* Ratings with dropdown */}
+          {/* RATINGS with dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setRatingsDropdownOpen(true)}
@@ -54,7 +64,7 @@ export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
                     setRatingsDropdownOpen(false);
                     onOpenRatingsSearch();
                   }}
-                  className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center justify-between"
+                  className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center justify-between cursor-pointer"
                 >
                   <span>Bank Loan Ratings</span>
                   <ArrowRight className="w-3.5 h-3.5 opacity-50" />
@@ -64,7 +74,7 @@ export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
                     setRatingsDropdownOpen(false);
                     onOpenRatingsSearch();
                   }}
-                  className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center justify-between"
+                  className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center justify-between cursor-pointer"
                 >
                   <span>Bond & Debenture Ratings</span>
                   <ArrowRight className="w-3.5 h-3.5 opacity-50" />
@@ -74,36 +84,52 @@ export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
                     setRatingsDropdownOpen(false);
                     onOpenRatingsSearch();
                   }}
-                  className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center justify-between"
+                  className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center justify-between cursor-pointer"
                 >
                   <span>Issuer Ratings</span>
                   <ArrowRight className="w-3.5 h-3.5 opacity-50" />
                 </button>
-                <a
-                  href="#services"
-                  onClick={() => setRatingsDropdownOpen(false)}
-                  className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center justify-between"
+                <button
+                  onClick={() => {
+                    setRatingsDropdownOpen(false);
+                    onNavigate('home');
+                    setTimeout(() => {
+                      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="w-full text-left px-4 py-2.5 text-xs text-slate-700 hover:bg-purple-50 hover:text-purple-700 flex items-center justify-between cursor-pointer"
                 >
                   <span>Rating Scale & Methodologies</span>
                   <ArrowRight className="w-3.5 h-3.5 opacity-50" />
-                </a>
+                </button>
               </div>
             )}
           </div>
 
-          <a
-            href="#research"
-            className="hover:text-purple-600 transition-colors uppercase whitespace-nowrap shrink-0"
+          <button
+            onClick={() => {
+              if (currentPage !== 'home') {
+                onNavigate('home');
+                setTimeout(() => {
+                  document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              } else {
+                document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="hover:text-purple-600 transition-colors uppercase whitespace-nowrap shrink-0 cursor-pointer"
           >
             RESEARCH & INSIGHTS
-          </a>
+          </button>
 
-          <a
-            href="#disclosures"
-            className="hover:text-purple-600 transition-colors uppercase whitespace-nowrap shrink-0"
+          <button
+            onClick={() => {
+              document.getElementById('disclosures')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="hover:text-purple-600 transition-colors uppercase whitespace-nowrap shrink-0 cursor-pointer"
           >
             DISCLOSURES
-          </a>
+          </button>
         </nav>
 
         {/* Primary Action Button */}
@@ -118,7 +144,7 @@ export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-100"
+            className="lg:hidden p-2 text-slate-600 hover:text-slate-900 rounded-lg hover:bg-slate-100 cursor-pointer"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -130,13 +156,24 @@ export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-5 space-y-4 animate-in slide-in-from-top duration-200">
           <nav className="flex flex-col space-y-3 text-sm font-medium text-slate-700">
-            <a
-              href="#about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-purple-600"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigate('home');
+              }}
+              className={`py-1 text-left ${currentPage === 'home' ? 'text-purple-600 font-bold' : 'hover:text-purple-600'}`}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigate('about');
+              }}
+              className={`py-1 text-left ${currentPage === 'about' ? 'text-purple-600 font-bold' : 'hover:text-purple-600'}`}
             >
               About ACER
-            </a>
+            </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -147,20 +184,27 @@ export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
               <span>Ratings & Rationales</span>
               <Search className="w-4 h-4 text-slate-400" />
             </button>
-            <a
-              href="#research"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-purple-600"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onNavigate('home');
+                setTimeout(() => {
+                  document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
+              className="py-1 text-left hover:text-purple-600"
             >
               Research & Insights
-            </a>
-            <a
-              href="#disclosures"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-1 hover:text-purple-600"
+            </button>
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                document.getElementById('disclosures')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="py-1 text-left hover:text-purple-600"
             >
               Disclosures & Governance
-            </a>
+            </button>
           </nav>
           <div className="pt-2 border-t border-slate-100">
             <button
@@ -168,7 +212,7 @@ export const Header = ({ onOpenGetRated, onOpenRatingsSearch }) => {
                 setMobileMenuOpen(false);
                 onOpenGetRated();
               }}
-              className="w-full bg-[#786CF0] hover:bg-[#685BD8] text-white text-xs font-semibold py-3 rounded-lg text-center uppercase tracking-wider"
+              className="w-full bg-[#786CF0] hover:bg-[#685BD8] text-white text-xs font-semibold py-3 rounded-lg text-center uppercase tracking-wider cursor-pointer"
             >
               Get Rated Now
             </button>
